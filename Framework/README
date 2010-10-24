@@ -1,0 +1,27 @@
+                      __           ___               
+                     /\ \         /\_ \             
+  ___ ___     ___    \_\ \  __  __\//\ \      __     
+/' __` __`\  / __`\  /'_` \/\ \/\ \ \ \ \   /'__`\   
+/\ \/\ \/\ \/\ \L\ \/\ \L\ \ \ \_\ \ \_\ \_/\ \L\.\_ 
+\ \_\ \_\ \_\ \____/\ \___,_\ \____/ /\____\ \__/.\_\
+ \/_/\/_/\/_/\/___/  \/__,_ /\/___/  \/____/\/__/\/_/
+  ----------- http://modulaframework.org -----------
+
+Features/Roadmap
+---------
+ - Completely module based Content Management System
+ - Fine-grained hierarchical permissions system based on Access Control Lists
+ - All system events hookable via the Event Notification Module
+ - Module system based on MVC design principles
+ - Completely OOP design
+ - Security features such as SSL, cross site scripting prevention, session hijacking prevention, cross site forgery protection for all forms, output buffer regex filtering for fail-safe filtering of potentionally sensitive information and extremely high entropy hashing algorithms provide an extremely secure environment for even the most secure websites
+ - Template based views with hierarchical-style inheritance. I.e, reusable custom controls
+ - Themeing system with simplified markup for quick theme building
+ - Ruby-on-rails-like URI Routing system for unlimited routing patterns based on regular expressions
+ - 'Intelligent' caching system for high traffic sites and or digg/slashdot effects
+ - Plugable database driver, allows for any kind of data storage, whether it be flat file, PDO or mySQLi etc
+ - General purpose libraries for various kinds of tasks such as image processing, file manipulation, file uploads, inter-site communications etc
+ - Default front end based on jQueryUI components to give a rich user experience
+ - 'Market Place' for installing and upgrading installed modules, security features include module signing and Developer authentication
+
+Plus much more!
