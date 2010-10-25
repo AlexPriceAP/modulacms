@@ -6,8 +6,7 @@
  * @defgroup filesystem
  * @ingroup application
  */
-class FileSystem
-{
+class FileSystem {
 
     /**
      * Copy the source file to the target file, overwritting any pre existing
@@ -18,17 +17,12 @@ class FileSystem
      * @param bool $overwrite
      * @return bool
      */
-    public static function copyFile($source, $target, $overwrite = false)
-    {
+    public static function copyFile($source, $target, $overwrite = false) {
         if (file_exists($source)) {
             if (file_exists($target) && $overwrite) {
                 $sourcestat = stat($source);
                 $targetstat = stat($target);
-                if ($sourcestat['mtime'] > $targetstat['mtime']) {
-                    copy($source, $target);
-                } else {
-                    return false;
-                }
+                return ($sourcestat['mtime'] > $targetstat['mtime']) ? copy($source, $target) : false;
             } else {
                 return copy($source, $target);
             }
@@ -45,8 +39,7 @@ class FileSystem
      * @param string $target
      * @return bool
      */
-    public static function moveFile($source, $target)
-    {
+    public static function moveFile($source, $target) {
         return $this->copyFile($source, $target) ? $this->deleteFile($source) : false;
     }
 
@@ -57,8 +50,7 @@ class FileSystem
      * @param int $mode
      * @return bool
      */
-    public static function createDir($path, $mode = 0777)
-    {
+    public static function createDir($path, $mode = 0777) {
         if (!is_dir($path)) {
             return mkdir($path, $mode, true);
         } else {
@@ -74,8 +66,7 @@ class FileSystem
      * @param bool $recursive
      * @return bool
      */
-    public static function deleteDir($path, $recursive = false)
-    {
+    public static function deleteDir($path, $recursive = false) {
         if (is_dir($path)) {
             if ($recursive) {
                 $iterator = new RecursiveDirectoryIterator($path);
@@ -92,8 +83,13 @@ class FileSystem
             return false;
     }
 
-    public static function dirList($path)
-    {
+    /**
+     * Lists all files in a given directory.
+     * 
+     * @param String $path
+     * @return Array
+     */
+    public static function dirList($path) {
         $handle = opendir($path);
         $dirs = array();
         if ($handle) {
@@ -110,13 +106,12 @@ class FileSystem
     }
 
     /**
-     * Delete the given file path, return false if the file doesn't exist.
+     * Delete the given file, return false if the file doesn't exist.
      *
      * @param string $path
      * @return bool
      */
-    public static function deleteFile($path)
-    {
+    public static function deleteFile($path) {
         return file_exists($path) ? unlink($path) : false;
     }
 
@@ -126,8 +121,7 @@ class FileSystem
      * @param string $path
      * @return string
      */
-    public static function mimeType($path)
-    {
+    public static function mimeType($path) {
         return file_exists($path) ? mime_content_type($path) : false;
     }
 
@@ -137,8 +131,7 @@ class FileSystem
      * @param string $path
      * @return bool
      */
-    public static function createFile($path)
-    {
+    public static function createFile($path) {
         return!file_exists($path) ? touch($path) : false;
     }
 
@@ -150,8 +143,7 @@ class FileSystem
      * @param int $umask
      * @return bool
      */
-    public static function chmod($path, $mode, $umask = 0000)
-    {
+    public static function chmod($path, $mode, $umask = 0000) {
         if (file_exists($path)) {
             // Store the current umask so we can set back after we're finished
             $umask_store = umask();
@@ -165,8 +157,15 @@ class FileSystem
         }
     }
 
-    public static function findFile($path, $filename)
-    {
+    /**
+     * Recursivly searches a path for a file and returns the path of the first
+     * occurance.
+     *
+     * @param String $path
+     * @param String $filename
+     * @return String
+     */
+    public static function findFile($path, $filename) {
         try {
             foreach (new recursiveIteratorIterator(new recursiveDirectoryIterator($path)) as $file) {
                 if (basename($file) == $filename) {
