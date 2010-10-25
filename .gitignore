@@ -1,2 +1,3 @@
 /Config/Sites/*/
+!/Config/Sites/Default
 /Modules/*/
