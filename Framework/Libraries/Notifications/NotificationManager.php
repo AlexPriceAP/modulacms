@@ -7,8 +7,11 @@ namespace Modula\Framework\Notifications;
  */
 class NotificationManager extends \Modula\Framework\Object {
 
-  public static function addNotification(Notification $notification){
+  private $repo;
 
+  public static function addNotification(Notification $notification){
+    $repo = new NotificationRepository();
+    $repo->create();
   }
 
   public static function deleteNotification(Notification $notification){
