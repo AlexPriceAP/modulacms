@@ -10,8 +10,8 @@ class NotificationManager extends \Modula\Framework\Object {
   private $repo;
 
   public static function addNotification(Notification $notification){
-    $repo = new NotificationRepository();
-    $repo->create();
+    $this->repo = new NotificationRepository();
+    $this->repo->create();
   }
 
   public static function deleteNotification(Notification $notification){
