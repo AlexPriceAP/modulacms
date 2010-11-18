@@ -7,23 +7,19 @@ namespace Modula\Framework\Notifications;
  */
 class NotificationRepository extends \Modula\Framework\Object {
 
-  public function __construct(){
+  public static function create(){
 
   }
 
-  public function create(){
+  public static function read(){
 
   }
 
-  public function read(){
+  public static function update(){
 
   }
 
-  public function update(){
-
-  }
-
-  public function delete(){
+  public static function delete(){
 
   }
 
