@@ -7,11 +7,11 @@ namespace Modula\Framework\Notifications;
  */
 class NotificationRepository extends \Modula\Framework\Object {
 
-  public static function create(){
+  public static function create($notification){
     //SQL to go here
   }
 
-  public static function read(){
+  public static function read($bindAttributes){
     //SQL to go here
   }
 
@@ -19,7 +19,7 @@ class NotificationRepository extends \Modula\Framework\Object {
     //SQL to go here
   }
 
-  public static function delete(){
+  public static function delete($notification){
     //SQL to go here
   }
 
