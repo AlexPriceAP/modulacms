@@ -7,24 +7,26 @@ namespace Modula\Framework\Notifications;
  */
 class Notification extends \Modula\Framework\Object {
 
-  private $bindAttributes = array();
   private $message;
+  private $bindAttributes = array();
   private $expireTime;
 
-  public function __construct(){
-
+  public function __construct($inputMsg, $inputAttribs, $inputTime){
+    $this->message = $inputMsg;
+    $this->bindAttributes = $inputAttribs;
+    $this->expireTime = $inputTime;
   }
 
   public function getMessage(){
-
+    return $this->message;
   }
 
   public function getExpireTime(){
-
+    return $this->expireTime;
   }
 
   public function getAttribute($name){
-
+    return $this->bindAttributes[$name];
   }
 
 }
