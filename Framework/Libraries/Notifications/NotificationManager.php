@@ -16,7 +16,7 @@ class NotificationManager extends \Modula\Framework\Object {
   }
 
   public static function getNotifications($bindAttributes){
-
+    NotificationRepository::read($bindAttributes);
   }
 
 }
