@@ -1,12 +1,8 @@
 <?php
 
-namespace Modula\Framework;
+namespace Modula\Framework\Security;
 
-/**
- * @defgroup hashing
- * @ingroup application
- */
-class HashGenerator {
+class HashGenerator extends \Modula\Framework\Object {
 
     public static function randomHash($type) {
         switch ($type) {
@@ -20,7 +16,7 @@ class HashGenerator {
                 return hash('md5', mt_rand());
                 break;
         }
-        return false;
+        throw new \Exception('No hashing algorithm specified');
     }
 
     public static function passwordHash($password, $salt = null) {
