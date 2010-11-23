@@ -34,21 +34,23 @@ class TokenManager extends \Modula\Framework\Object {
      * @return bool
      */
     public static function verifyToken(Token $token, array $bindAttributes = array()) {
+        $valid = true;
         if (TokenRepository::read($token)) {
             if ($bindAttributes) {
                 foreach ($bindAttribute as $attribute => $value) {
                     if (array_key_exists($token->bindAttributes, $attribute) && $token->bindAttributes[$attribute] == $value) {
                         continue;
                     } else {
-                        return false;
+                        $valid = false;
                     }
                 }
             } else {
-                return true;
+                $valid = true;
             }
         } else {
-            return false;
+            $valid = false;
         }
+        return $valid;
     }
 
     /**
@@ -61,5 +63,4 @@ class TokenManager extends \Modula\Framework\Object {
     }
 
 }
-
 ?>
