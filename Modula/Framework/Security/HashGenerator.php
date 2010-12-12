@@ -4,6 +4,11 @@ namespace Modula\Framework\Security;
 
 class HashGenerator extends \Modula\Framework\Object {
 
+    /**
+     *
+     * @param string $type
+     * @return string
+     */
     public static function randomHash($type) {
         switch ($type) {
             case 'sha1':
@@ -19,6 +24,12 @@ class HashGenerator extends \Modula\Framework\Object {
         throw new \Exception('No hashing algorithm specified');
     }
 
+    /**
+     *
+     * @param string $password
+     * @param string $salt
+     * @return string
+     */
     public static function passwordHash($password, $salt = null) {
         if (!$salt) {
             $randSalt = self::generateSalt();
@@ -28,6 +39,11 @@ class HashGenerator extends \Modula\Framework\Object {
         }
     }
 
+    /**
+     *
+     * @param int $length
+     * @return string
+     */
     private static function generateSalt($length = 12) {
         $characters = 'abcdef1234567890';
         $salt = '';
